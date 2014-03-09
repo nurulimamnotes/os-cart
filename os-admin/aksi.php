@@ -71,12 +71,20 @@ $insert = mysql_query("INSERT INTO os_produk 	(nama_produk,
 												harga,
 												gambar,
 												id_kategori,
-												deskripsi) 
+												id_penanda,
+												deskripsi,
+												detail,
+												bintang,
+												stok) 
 										VALUES ('$_POST[nama_produk]',
 												'$_POST[harga]',
 												'$nama_file',
 												'$_POST[id_kategori]',
-												'$_POST[deskripsi]')");
+												'$_POST[id_penanda]',
+												'$_POST[deskripsi]',
+												'$_POST[detail]',
+												'$_POST[bintang]',
+												'$_POST[stok]')");
 header('location:admin.php?pengaturan='.$pengaturan);
 }
 
@@ -89,7 +97,11 @@ elseif ($pengaturan=='produk' AND $aksi=='update'){
 		mysql_query("UPDATE os_produk SET nama_produk	= '$_POST[nama_produk]',
 										harga		= '$_POST[harga]',
 										id_kategori	= '$_POST[id_kategori]',
-										deskripsi	= '$_POST[deskripsi]'
+										id_penanda	= '$_POST[id_penanda]',
+										deskripsi	= '$_POST[deskripsi]',
+										detail	= '$_POST[detail]',
+										bintang	= '$_POST[bintang]',
+										stok	= '$_POST[stok]'
 									WHERE id = '$_POST[id]'");
 	}
 	else {
@@ -98,9 +110,31 @@ elseif ($pengaturan=='produk' AND $aksi=='update'){
 										harga		= '$_POST[harga]',
 										gambar		= '$nama_file',
 										id_kategori	= '$_POST[id_kategori]',
-										deskripsi	= '$_POST[deskripsi]'
+										id_penanda	= '$_POST[id_penanda]',
+										deskripsi	= '$_POST[deskripsi]',
+										detail	= '$_POST[detail]',
+										bintang	= '$_POST[bintang]',
+										stok	= '$_POST[stok]'
 									WHERE id = '$_POST[id]'");
 	}
 	header('location:admin.php?pengaturan='.$pengaturan);
 }
+
+// Tambah Halaman
+elseif ($pengaturan=='halaman' AND $aksi=='tambah'){
+	$insert = mysql_query("INSERT INTO os_halaman (id,judul,link,artikel) VALUES ('','$_POST[judul]','$_POST[link]','$_POST[artikel]')");
+	if($insert == FALSE){
+		echo "<p>GAGAL Menambahkan Halaman : ".(mysql_error())."</p>";
+		}
+	header('location:admin.php?pengaturan='.$pengaturan);
+	}
+
+// Update Halaman
+elseif ($pengaturan=='halaman' AND $aksi=='update'){
+	$update = mysql_query("UPDATE os_halaman SET judul = '$_POST[judul]', link = '$_POST[link]', artikel = '$_POST[artikel]' WHERE id = '$_POST[id]'");
+	if($update ==FALSE){
+		echo "<p>GAGAL Update Halaman : ".(mysql_error())."</p>";
+		}
+	header('location:admin.php?pengaturan='.$pengaturan);
+	}
 ?>

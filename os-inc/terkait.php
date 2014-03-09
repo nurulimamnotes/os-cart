@@ -12,13 +12,13 @@ while($data=mysql_fetch_array($sql)){ ?>
                     <div class="product-label product-new">
                       <span>NEW</span>
                     </div>
-                      <a class="img" href="?v=produk&id=<?php echo $data['id']; ?>"><img alt="<?php echo $data['nama_produk']; ?>" src="os-media/img/<?php echo $data['gambar']; ?>" title="<?php echo $data['nama_produk']; ?>"></a>
+                      <a class="img" href="?halaman=produk&id=<?php echo $data['id']; ?>"><img alt="<?php echo $data['nama_produk']; ?>" src="os-media/img/<?php echo $data['gambar']; ?>" title="<?php echo $data['nama_produk']; ?>"></a>
                     </div>
 
                     <div class="product-meta">
                       <!-- Nama Produk -->
                       <div class="name">
-                        <a href="?v=produk&id=<?php echo $data['id']; ?>"><?php echo $data['nama_produk']; ?></a>
+                        <a href="?halaman=produk&id=<?php echo $data['id']; ?>"><?php echo $data['nama_produk']; ?></a>
                       </div>
 
                       <!-- Harga Besar -->
@@ -82,13 +82,13 @@ while($data=mysql_fetch_array($sql)){ ?>
                     <div class="product-label product-new">
                       <span>NEW</span>
                     </div>
-                      <a class="img" href="?v=produk&id=<?php echo $data['id']; ?>"><img alt="<?php echo $data['nama_produk']; ?>" src="os-media/img/<?php echo $data['gambar']; ?>" title="<?php echo $data['nama_produk']; ?>"></a>
+                      <a class="img" href="?halaman=produk&id=<?php echo $data['id']; ?>"><img alt="<?php echo $data['nama_produk']; ?>" src="os-media/img/<?php echo $data['gambar']; ?>" title="<?php echo $data['nama_produk']; ?>"></a>
                     </div>
 
                     <div class="product-meta">
                       <!-- Nama Produk -->
                       <div class="name">
-                        <a href="?v=produk&id=<?php echo $data['id']; ?>"><?php echo $data['nama_produk']; ?></a>
+                        <a href="?halaman=produk&id=<?php echo $data['id']; ?>"><?php echo $data['nama_produk']; ?></a>
                       </div>
 
                       <!-- Harga Besar -->

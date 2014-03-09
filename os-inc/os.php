@@ -92,8 +92,8 @@ $nama_bln=array(1=> "Januari", "Februari", "Maret", "April", "Mei",
 // Fungsi untuk keranjang belanja
 function cart_content(){
   $ct_content = array();
-  $sid = session_id();
-  $sql = mysql_query("SELECT * FROM os_keranjang WHERE id_sesi='$sid'");
+  $id_sesi = session_id();
+  $sql = mysql_query("SELECT * FROM os_keranjang WHERE id_sesi='$id_sesi'");
   while ($r=mysql_fetch_array($sql)) {
     $ct_content[] = $r;
   }
@@ -102,6 +102,6 @@ function cart_content(){
 // Fungsi untuk menghapus keranjang
 function deletecart(){
   $del = date('Y-m-d', mktime(0,0,0, date('m'), date('d') - 1, date('Y')));
-  mysql_query("DELETE FROM os_keranjang WHERE tgl_belanja < '$del'");
+  mysql_query("DELETE FROM os_keranjang WHERE tanggal_belanja < '$del'");
   }
 ?>

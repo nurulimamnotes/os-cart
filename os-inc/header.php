@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+session_start();
 echo '<!DOCTYPE html>
 <!--[if IE 7 ]><html class="ie ie7 lte9 lte8 lte7" lang="en-US"><![endif]-->
 <!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">  <![endif]-->
@@ -51,7 +53,7 @@ echo '<!DOCTYPE html>
 
     <!-- MegaMenu -->
     <script src="os-media/theme/front/js/menu3d.js" type="text/javascript"></script>
-
+    
     <!-- iView Slider -->
     <script src="os-media/theme/front/js/raphael-min.js" type="text/javascript"></script>
     <script src="os-media/theme/front/js/jquery.easing.js" type="text/javascript"></script>

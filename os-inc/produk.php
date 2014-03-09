@@ -52,24 +52,27 @@
                 </div>
               </div>
             </div>
-
+<form action="keranjang.php?aksi=tambahkan" method="POST">
+                        <input type="hidden" name="idku" value="<?php echo $data['id']; ?>">
             <div class="row">
               <div class="short-info-opt-wr col-md-12 col-sm-12 col-xs-12">
                 <div class="short-info-opt">
                   <div class="att-row">
                     <div class="qty-wr">
                       <div class="qty-text hidden-xs">Qty :</div>
+                    <div class="qtyinput">
                       <div class="quantity-inp">
                         <input type="text" class="quantity-input" name="p_quantity" value="1">
+                        <div class="quantity-txt minusbtn"><a href="#a" class="qty qtyminus"><i class="fa fa-minus fa-fw"></i></a></div>
+                        <div class="quantity-txt plusbtn"><a href="#a" class="qty qtyplus"><i class="fa fa-plus fa-fw"></i></a></div>
                       </div>
-                      <div class="quantity-txt"><a href="#a" class="qty qtyminus"><i class="fa fa-minus fa-fw"></i></a></div>
-                      <div class="quantity-txt"><a href="#a" class="qty qtyplus"><i class="fa fa-plus fa-fw"></i></a></div>
+                    </div>
                     </div>
                     <div class="color-wr">
                       <div class="color-options">
                         <ul class="pull-left">
                           <li class="input-prepend dropdown" data-select="true"> <a class="add-on dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" href="#a"> <span class="dropdown-display">Warna</span> <i class="fa fa-sort fa-fw"></i> </a> 
-                            <input class="dropdown-field" type="hidden" value="">
+                            <input class="dropdown-field" type="hidden" name="warna" value="">
                             <ul class="dropdown-menu" role="menu">
                               <li><a href="#a" data-value="Black" class="border-black">Hitam</a></li>
                               <li><a href="#a" data-value="Green" class="border-green">Hijau</a></li>
@@ -84,7 +87,7 @@
                       <div class="size-options">
                         <ul class="pull-left">
                           <li class="input-prepend dropdown" data-select="true"> <a class="add-on dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" href="#a"> <span class="dropdown-display">Ukuran</span> <i class="fa fa-sort fa-fw"></i> </a> 
-                            <input class="dropdown-field" type="hidden" value="">
+                            <input class="dropdown-field" type="hidden" name="ukuran" value="">
                             <ul class="dropdown-menu" role="menu">
                               <li><a href="#a" data-value="S">S</a></li>
                               <li><a href="#a" data-value="M">M</a></li>
@@ -118,6 +121,7 @@
                 </div>
               </div>
             </div>
+</form>
           </div>
           
           <!-- end: product details --> 
@@ -158,67 +162,35 @@
           <p><?php echo $data['detail']; ?></p>
         </div>
         <div class="tab-pane" id="reviews">
-          <div class="heading"> <span><strong>Ada 3 Testimoni untuk Produk "<?php echo $data['nama_produk']; ?>"</strong></span>
-              <div class="rating">
-                <?php
-                for ($i=0; $i < $data['bintang']; $i++) { 
-                  echo '<i class="fa fa-star"></i>';
-                }
-                ?>
-              </div>
-            <a href="#wr" class="btn color1 normal">Tambahkan Testimoni</a> </div>
-          <div class="review">
-            <div class="review-info">
-              <div class="name"><i class="fa fa-comment-o fa-flip-horizontal fa-fw"></i> Fida Khattak</div>
-              <div class="date"> on <em>Aug 15, 2013</em></div>
-              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half-o"></i> <i class="fa fa-star-o"></i> </div>
-            </div>
-            <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.</div>
+          <div class="heading"> <span><strong>Beberapa Testimoni untuk Produk "<?php echo $data['nama_produk']; ?>"</strong></span>
           </div>
           <div class="review">
+<?php
+$testimoni = mysql_query("SELECT * FROM os_testimoni WHERE id_testimoni = '".$data['id']."'");
+  while($testiku=mysql_fetch_array($testimoni)){ ?>
+          <br />
             <div class="review-info">
-              <div class="name"><i class="fa fa-comment-o fa-flip-horizontal fa-fw"></i> Fida Khattak</div>
-              <div class="date"> on <em>Aug 15, 2013</em></div>
-              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half-o"></i> <i class="fa fa-star-o"></i> </div>
+              <div class="name"><i class="fa fa-comment-o fa-flip-horizontal fa-fw"></i> <?php echo"$testiku[nama]"; ?></div>
+              <div class="rating"><?php echo"$testiku[waktu]"; ?></div>
             </div>
-            <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.</div>
-          </div>
-          <span class="pull-left">Menampilkan 1 dari 4 halaman</span>
-          <div class="pull-right">
-            <ul class="pagination pagination-xs">
-              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-            </ul>
+            <div class="text"><?php echo"$testiku[testimoni]"; ?></div>
+<?php } ?>
           </div>
           <div class="write-reivew" id="#write-review">
             <h3>Tulis Testimoni</h3>
             <div class="fr-border"></div>
             
             <!-- Form -->
-            <form action="#self" id="review_form" method="post">
+            <form action="os-inc/proses-testimoni.php" id="review_form" method="post">
               <div class="row">
                 <div class="col-md-4 col-xs-12"> <a name="wr"> </a>
-                  <fieldset class="rating">
-                    <input type="radio" id="star5" name="rating" value="5">
-                    <label for="star5" title="Rocks!" class="fa fa-star">5 Bintang</label>
-                    <input type="radio" id="star4" name="rating" value="4">
-                    <label for="star4" title="Pretty good" class="fa fa-star">4 Bintang</label>
-                    <input type="radio" id="star3" name="rating" value="3">
-                    <label for="star3" title="Cool" class="fa fa-star">3 Bintang</label>
-                    <input type="radio" id="star2" name="rating" value="2">
-                    <label for="star2" title="Kinda bad" class="fa fa-star">2 Bintang</label>
-                    <input type="radio" id="star1" name="rating" value="1">
-                    <label for="star1" title="Oops!" class="fa fa-star">1 Bintang</label>
-                  </fieldset>
-                  <input type="text" id="name" placeholder="Name">
-                  <input type="text" id="email" placeholder="E-mail">
+                  <input type="hidden" id="id" name="id_testimoni" value="<?php echo $data['id']; ?>" />
+                  <input type="hidden" name="waktu" value="<?php echo date('d - F - Y'); ?>" />
+                  <input type="text" id="name" name="nama" placeholder="Nama">
+                  <input type="text" id="email" name="email" placeholder="E-mail">
                 </div>
                 <div class="col-md-8 col-xs-12">
-                  <textarea name="" id="review" placeholder="Review" rows="8"></textarea>
+                  <textarea id="review" name="testimoniku" placeholder="Testimoni Anda" rows="8"></textarea>
                 </div>
               </div>
               <button class="btn normal color1 pull-right">Kirim</button>
@@ -229,12 +201,15 @@
         <div class="tab-pane" id="tags">
           <div class="tags"> <a href="#a">
                     <?php
-                      $sql = mysql_query("SELECT * FROM os_produk WHERE id = '$idp'");
-                      $data=mysql_fetch_array($sql);
                       $kategori = mysql_query("SELECT * FROM os_kategori WHERE id = '".$data['id_kategori']."'");
                       $lht = mysql_fetch_array($kategori);
                         echo"$lht[kategori]";
-                    ?></a> </div>
+                    ?></a> <a href="#a">
+                    <?php
+                      $penanda = mysql_query("SELECT * FROM os_penanda WHERE id = '".$data['id_penanda']."'");
+                      $lht = mysql_fetch_array($penanda);
+                        echo"$lht[nama_penanda]";
+                    ?></a></div>
         </div>
         <div class="tab-pane" id="custom-tab">
 

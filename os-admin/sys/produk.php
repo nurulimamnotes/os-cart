@@ -125,6 +125,17 @@ switch($_GET[aksi]){
                                     
                                           echo"</select></td>
                                             </tr>
+                                      <tr>
+                                      <td>Penanda</td>
+                                      <td><select name='id_penanda' class='form-control' style='width:180px'>";
+
+                                      $query = mysql_query("SELECT * FROM os_penanda");
+                                        while ($lht = mysql_fetch_array($query)){
+                                          echo "<option value='$lht[id]''>$lht[nama_penanda]</option>";
+                                          }
+                                    
+                                          echo"</select></td>
+                                            </tr>
                                             <tr>
                                             <td>Harga</td>
                                             <td><div class='form-group input-group'>
@@ -133,12 +144,25 @@ switch($_GET[aksi]){
                                             </div></td>
                                             </tr>
                                             <tr>
+                                            <td>Bintang</td>
+                                            <td><input type='text' name='bintang' class='form-control' style='width:280px' /></td>
+                                            </tr>
+                                            <tr>
+                                            <td>Ketersediaan</td>
+                                            <td><input type='text' name='stok' class='form-control' style='width:280px' /></td>
+                                            </tr>
+                                            <tr>
                                             <td>Deskripsi</td>
                                             <td><textarea name='deskripsi' class='form-control' rows='7'></textarea></td>
                                             </tr>
                                             <tr>
+                                            <td>Detail</td>
+                                            <td><textarea name='detail' class='form-control' rows='17'></textarea></td>
+                                            </tr>
+                                            <tr>
                                             <td>Gambar</td>
                                             <td><input type='file' name='gambar_produk' size='40'></td>
+                                            </tr>
                                             <tr>
                                             <td colspan='2'></td>
                                             </tr>
@@ -207,6 +231,19 @@ switch($_GET[aksi]){
                                     echo"</select></td>
                                       </tr>
                                       <tr>
+                                      <td>Penanda</td>
+                                  <td><select name='id_penanda' class='form-control' style='width:180px'>";
+                                  $query = mysql_query("SELECT * FROM os_penanda");
+                                    while ($tmp = mysql_fetch_array($query)){
+                                      if($dsp['id_penanda'] == $tmp['id']) {
+                                        echo "<option value='$tmp[id]' selected>$tmp[nama_penanda]</option>";
+                                      } else {
+                                        echo "<option value='$tmp[id]'>$tmp[nama_penanda]</option>";
+                                      }
+                                    }
+                                          echo"</select></td>
+                                            </tr>
+                                      <tr>
                                       <td>Harga</td>
                                             <td><div class='form-group input-group'>
                                             <span class='input-group-addon'>Rp</span>
@@ -214,8 +251,20 @@ switch($_GET[aksi]){
                                             </div></td>
                                       </tr>
                                       <tr>
+                                      <td>Bintang</td>
+                                      <td><input type='text' name='bintang' value='$dsp[bintang]' class='form-control' style='width:280px' /></td>
+                                      </tr>
+                                      <tr>
+                                      <td>Ketersediaan</td>
+                                      <td><input type='text' name='stok' value='$dsp[stok]' class='form-control' style='width:280px' /></td>
+                                      </tr>
+                                      <tr>
                                       <td>Deskripsi</td>
                                       <td><textarea name='deskripsi' class='form-control' rows='7'>$dsp[deskripsi]</textarea></td>
+                                      </tr>
+                                      <tr>
+                                      <td>Detail</td>
+                                      <td><textarea name='detail' class='form-control' rows='17'>$dsp[detail]</textarea></td>
                                       </tr>
                                       <tr>
                                       <td></td>

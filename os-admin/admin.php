@@ -96,6 +96,18 @@ else{
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
+                        <a href="#"><i class="fa fa-book fa-fw"></i> Halaman<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="admin.php?pengaturan=halaman" <?php if($_GET['pengaturan']=='halaman'){?>class="active"<?php } ?>>Lihat Halaman</a>
+                            </li>
+                            <li>
+                                <a href="admin.php?pengaturan=halaman&aksi=tambah-halaman" <?php if($_GET['pengaturan']=='halaman' AND $_GET['aksi']=='tambah-halaman'){?>class="active"<?php } ?>>Tambah Halaman</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
                         <a href="#"><i class="fa fa-tags fa-fw"></i> Kategori<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -103,6 +115,18 @@ else{
                             </li>
                             <li>
                                 <a href="admin.php?pengaturan=kategori&aksi=tambah-kategori" <?php if($_GET['pengaturan']=='kategori' AND $_GET['aksi']=='tambah-kategori'){?>class="active"<?php } ?>>Tambah Kategori</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-suitcase fa-fw"></i> Label<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="admin.php?pengaturan=penanda" <?php if($_GET['pengaturan']=='penanda'){?>class="active"<?php } ?>>Lihat Label</a>
+                            </li>
+                            <li>
+                                <a href="admin.php?pengaturan=penanda&aksi=tambah-penanda" <?php if($_GET['pengaturan']=='penanda' AND $_GET['aksi']=='tambah-penanda'){?>class="active"<?php } ?>>Tambah Label</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -135,40 +159,10 @@ else{
         </nav>
         <!-- /.navbar-static-side -->
 
-      
-          <?php 
-            if ($_GET[pengaturan]=='beranda'){
-            require "sys/beranda.php";
-            }
-            // Tambah Kategori
-            elseif ($_GET[pengaturan]=='kategori'){
-            require_once "sys/kategori.php";
-            }
-            // Tambah Produk
-            elseif ($_GET[pengaturan]=='produk'){
-            require_once "sys/produk.php";
-            }
-            // Pengaturan Toko Online
-            elseif ($_GET[pengaturan]=='toko-online'){
-            require_once "sys/pengaturan.php";
-            }
-            // Pengaturan Akun Jejaring Sosial
-            elseif ($_GET[pengaturan]=='jejaring-sosial'){
-            require_once "sys/pengaturan.php";
-            }
-            // Pengaturan Profil Pengguna
-            elseif ($_GET[pengaturan]=='pengguna'){
-            require_once "sys/pengaturan.php";
-            }
-            // Info Server
-            elseif ($_GET[pengaturan]=='info'){
-            require_once "sys/pengaturan.php";
-            }
-            //Report
-            elseif ($_GET[pengaturan]=='laporan'){
-            require_once "sys/laporan.php";
-            }
-         ?>
+      <?php
+      // Konfigurasi URL
+      include 'url.php';
+      ?>
 
 
       <section style="margin:20px 0;clear:both"></section>
